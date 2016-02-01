@@ -1,0 +1,59 @@
+---
+layout : layout
+title : NNX - Neural Networks for Excel
+---
+
+<div class="row hero">
+	<div class="col-md-3">
+		<h3>Multilayer perceptrons done the Excel way</h3>
+		<p class="feature-list"><i class="fa-fw fa fa-lightbulb-o"></i> Intuitive Excel functions</p>
+		<p class="feature-list"><i class="fa-fw fa fa-table"></i> Define, train, use multilayer perceptrons</p>
+		<p class="feature-list"><i class="fa-fw fa fa-rotate-left"></i> Online and batch backpropagation with stopping conditions</p>
+		<p class="feature-list"><i class="fa-fw fa fa-code"></i> Error evaluation functions and other utilities</p>
+
+		<div class="clearfix"></div>
+
+		<div class="downloads">
+			<a href="download/NNX-AddIn-packed.xll" class="btn btn-success">
+				<span class="glyphicon glyphicon-download-alt"></span> 32 bit add-in
+			</a>
+			<a href="download/NNX-AddIn64-packed.xll" class="btn btn-success">
+				<span class="glyphicon glyphicon-download-alt"></span> 64 bit add-in
+			</a>
+		</div>
+		<div class="clearfix"></div>
+		<p class="small">Version 0.1 &mdash; <a href="https://support.office.com/en-us/article/What-version-of-Office-am-I-using-932788b8-a3ce-44bf-bb09-e334518b8b19?ui=en-US&rs=en-US&ad=US&fromAR=1">Do I get 32 bit or 64 bit?</a></p>
+	</div>
+	<div class="col-md-9">
+		<img src="img/NNX-hero-movie.gif" alt="NNX in action"
+			width="789", height="379" class="hero-image"/>
+	</div>
+</div>
+<div class="clearfix"></div>
+{% for post in site.posts  limit:5 %}
+	<div class="idea">
+		{% if forloop.first and post.layout == "post" %}
+			<h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
+			<div class="postdate">{{ post.date | date: "%e %B, %Y"  }}
+				<ul>
+				{% for tag in post.tags %}
+					<li><a href="/tag/{{ tag }}">{{ tag }}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+			{{ post.content }}
+			<br />
+			<a href="{{ post.url}}#disqus_thread">Comments</a>
+		{% else %}
+			<h2><a class="postlink" href="{{ post.url }}">{{ post.title }}</a></h2>
+			<div class="postdate">{{ post.date | date: "%e %B, %Y"  }}
+				<ul>
+				{% for tag in post.tags %}
+					<li><a href="/tag/{{ tag }}">{{ tag }}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+			{{ post.content }}
+		{% endif %}
+	</div>
+{% endfor %}

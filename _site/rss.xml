@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Feed Name</title>
+    <link>http://domain/</link>
+    <atom:link href="http://domain/rss.xml" rel="self" type="application/rss+xml" />
+    <description></description>
+    <language>en-au</language>
+    <pubDate>Sun, 31 Jan 2016 20:14:04 -05:00</pubDate>
+    <lastBuildDate>Sun, 31 Jan 2016 20:14:04 -05:00</lastBuildDate>
+    
+    <item>
+      <title>Initial release</title>
+      <link>http://domain/2016/01/31/initial_release.html</link>
+      <pubDate>Sun, 31 Jan 2016 00:00:00 -05:00</pubDate>
+      <author>Author</author>
+      <guid>http://domain/2016/01/31/initial_release.html</guid>
+      <description>&lt;p&gt;NNX has now became a minimal viable product (and very minimal at that indeed), so off it goes into the world!&lt;/p&gt;
+&lt;p&gt;There&apos;s still lots of stuff to do. At the present, NNX supports the following:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Multilayer perceptrons where each node in layer N is connected to each node in layer N+1.&lt;/li&gt;
+&lt;li&gt;Activation function: \(\tanh\) for hidden layers, &lt;a href=&quot;https://en.wikipedia.org/wiki/Softmax_function&quot;&gt;softmax&lt;/a&gt; for output layer.&lt;/li&gt;
+&lt;li&gt;Backpropagation: assumes &lt;a href=&quot;https://en.wikipedia.org/wiki/Cross_entropy&quot;&gt;cross-entropy error&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Backpropagation stopping conditions: either fixed number of epochs, or stop when error on validation set
+does not improve with an upper limit on epochs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In near to medium future I am hoping to add:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Regression neural networks, with output layers having tanh activation function instead of softmax.&lt;/li&gt;
+&lt;li&gt;Composite networks that allow more structured connections between layers.&lt;/li&gt;
+&lt;li&gt;Detailed training results: elapsed time, batch error at every epoch, etc.&lt;/li&gt;
+&lt;li&gt;Faster training. There are some clear optimization oportunities.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Other things under consideration: replace most object creation methods with with a single
+&lt;code&gt;nnMakeObject(...)&lt;/code&gt; function. This will require some careful thinking about validation and
+.NET API.&lt;/p&gt;
+&lt;p&gt;At the present I will likely focus only on feed-forward neural networks, as more complex
+networks will likely be too heavy for Excel.&lt;/p&gt;</description>
+    </item>
+    
+  </channel> 
+</rss>
