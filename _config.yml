@@ -1,2 +1,4 @@
-pretzel: 
+pretzel:
     engine: liquid
+exclude:
+    - LICENSE.txt
