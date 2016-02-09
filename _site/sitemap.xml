@@ -52,6 +52,22 @@
 	
   
 	
+	<url>
+		<loc>http://domain/docs/0.1/reference.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
+		<loc>http://domain/docs/0.1/tutorial.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
   
 	
   
