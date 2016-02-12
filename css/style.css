@@ -62,15 +62,28 @@ li
 	padding:0;
 	list-style-type:none;
 }
+
+.entry-container, .idea {
+	max-width: 900px;
+}
+
 .entry ul, .idea ul
 {
 	margin-left:10px;
 }
-.entry li, .idea li , .latest li
+.entry ul li, .idea ul li , .latest ul li
 {
 	margin-left:10px;
 	list-style-type:circle;
 }
+
+.entry ol li, .idea ol li , .latest ol li
+{
+	margin-left:10px;
+	list-style-type: decimal;
+}
+
+
 #hometext a { font-size: 2em; margin-left: 5px; margin-right:10px; display: none; color: #41B1E1; font-weight: normal;  }
 #home:hover
 {
@@ -107,8 +120,10 @@ img
 {
   width: auto !important;
   height: auto !important;
-  max-width: 100%;
+  margin: 20px auto;
+  display:block;
   border: none;
+  align-self: center;
 }
 .postdate
 {
@@ -264,4 +279,5 @@ nav .navbar-nav > li > a:hover, nav .navbar-nav > li > a:focus {
 
 .hero-image {
 	margin-top: 23px;
+	margin-bottom: 0;
 }

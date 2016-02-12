@@ -4,7 +4,7 @@
 		<meta content="en-au" http-equiv="Content-Language" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>Initial release</title>
+		<title>NNX add-in function reference</title>
 		<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Varela+Round' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -52,31 +52,12 @@
 				<div id="content" class="container">
 					<div class="entry-container">
 	<div class='entry'>
-		<h1> Initial release </h1>
-		<span class="postdate">31 January, 2016
+		<h1> NNX add-in function reference </h1>
+		<span class="postdate"> 8 February, 2016
 			
 		</span>
-		<p>NNX has now became a minimal viable product (and very minimal at that indeed), so off it goes into the world!</p>
-<p>There's still lots of stuff to do. At the present, NNX supports the following:</p>
-<ul>
-<li>Multilayer perceptrons where each node in layer N is connected to each node in layer N+1.</li>
-<li>Activation function: \(\tanh\) for hidden layers, <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax</a> for output layer.</li>
-<li>Backpropagation: assumes <a href="https://en.wikipedia.org/wiki/Cross_entropy">cross-entropy error</a>.</li>
-<li>Backpropagation stopping conditions: either fixed number of epochs, or stop when error on validation set
-does not improve with an upper limit on epochs.</li>
-</ul>
-<p>In near to medium future I am hoping to add:</p>
-<ul>
-<li>Regression neural networks, with output layers having tanh activation function instead of softmax.</li>
-<li>Composite networks that allow more structured connections between layers.</li>
-<li>Detailed training results: elapsed time, batch error at every epoch, etc.</li>
-<li>Faster training. There are some clear optimization oportunities.</li>
-</ul>
-<p>Other things under consideration: replace most object creation methods with with a single
-<code>nnMakeObject(...)</code> function. This will require some careful thinking about validation and
-.NET API.</p>
-<p>At the present I will likely focus only on feed-forward neural networks, as more complex
-networks will likely be too heavy for Excel.</p>
+		<h1>Getting started</h1>
+<p>Before starting, make sure you have downloaded and installed latest version of NNX. You can get it on the <a href="/">main page</a>.  If you don't already have it, NNX addin will ask you to install [].NET framework 4.6 runtime](https://www.microsoft.com/en-us/download/details.aspx?id=48130). Needless to say, Excel is required.</p>
 	</div>
 </div>
 <div id="page-navigation"> 
