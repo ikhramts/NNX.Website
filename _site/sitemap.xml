@@ -7,7 +7,7 @@
   <!-- Generated with pretzel -->
   
   <url>
-    <loc>http://domain/2016/01/31/initial_release.html</loc>
+    <loc>http://nnx-addin.org/2016/01/31/initial_release.html</loc>
     <lastmod>2016-01-31T00:00:00-05:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
@@ -17,7 +17,7 @@
   
 	
 	<url>
-		<loc>http://domain/atom.xml</loc>
+		<loc>http://nnx-addin.org/atom.xml</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
@@ -27,7 +27,7 @@
   
 	
 	<url>
-		<loc>http://domain/index.html</loc>
+		<loc>http://nnx-addin.org/index.html</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
@@ -35,7 +35,7 @@
   
 	
 	<url>
-		<loc>http://domain/rss.xml</loc>
+		<loc>http://nnx-addin.org/rss.xml</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
@@ -43,25 +43,7 @@
   
 	
 	<url>
-		<loc>http://domain/sitemap.xml</loc>
-		<changefreq>daily</changefreq>
-		<priority>1.00</priority>
-	</url>
-	
-  
-	
-  
-	
-  
-	
-  
-	
-  
-	
-  
-	
-	<url>
-		<loc>http://domain/docs/reference.html</loc>
+		<loc>http://nnx-addin.org/sitemap.xml</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
@@ -70,8 +52,26 @@
 	
   
 	
+  
+	
+  
+	
+  
+	
+  
+	
 	<url>
-		<loc>http://domain/docs/tutorial.html</loc>
+		<loc>http://nnx-addin.org/docs/reference.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/tutorial.html</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
