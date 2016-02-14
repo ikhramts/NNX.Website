@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Tutorial</title>
+		<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Varela+Round' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	</head>
+
+	<body>
+		<div class="outer-wrap">
+			<div id="content">
+				<nav class="navbar ">
+				  <div class="container-fluid">
+				    <!-- Brand and toggle get grouped for better mobile display -->
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <div class="navbar-brand" href="index.html">
+				      	<p class="h1"><span class="nnx-nn">NN</span><span class="nnx-x">X</span></p>
+				      	<p class="tagline">Neural networks for Excel</p>
+				      </div>
+				    </div>
+
+				    <!-- Collect the nav links, forms, and other content for toggling -->
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      <ul class="nav navbar-nav">
+				        <li><a href="/index.html"><i class="fa fa-home"></i>  Home</a></li>
+				        <li>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book"></i> Docs <span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				            <li><a href="/docs/tutorial/">Tutorial</a></li>
+				            <li><a href="/docs/reference/">Function reference</a></li>
+				            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">Sample workbook</a></li>
+				          </ul>
+						</li>
+				        <li><a href="https://github.com/ikhramts/nnx"><i class="fa fa-github"></i>  Source</a></li>
+				      </ul>
+				    </div><!-- /.navbar-collapse -->
+				  </div><!-- /.container-fluid -->
+				</nav>
+				<div id="content" class="container">
+					<div class="entry-container">
+	<div class='entry'>
+		<h1> Tutorial </h1>
+		<span class="postdate">12 February, 2016
+			
+		</span>
+		<h2>Getting started</h2>
+<p>Before starting, make sure you have downloaded and installed latest version of NNX. You can get it on the <a href="/">main page</a>.  If you don't already have it, NNX addin will ask you to install <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48130">.NET framework 4.6 runtime</a>. Needless to say, Excel is required.</p>
+<h2>Creating a trainer</h2>
+<p>To start, download a <a href="Iris-flower-data-set-starter.xlsx">starter workbook</a>. Alternatively, if you wish, you can download the <a href="Iris-flower-data-set.xlsx">fully completed sample workbook</a>.</p>
+<p>NNX offers two ways to define neural networks:</p>
+<ol>
+<li>Directly create a neural network and set its weights, or</li>
+<li>Create a trained neural network from training inputs.</li>
+</ol>
+<p>We'll take the second approach first.</p>
+<p>The sample workbook contains the famous <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">Fisher's iris flower data set</a>. It has already been randomized, and split into a training set and a testing set, with inputs for training and neural network definition ready to go.</p>
+<p><img src="sample-overview.png" alt="Overview of the top left section of the sample workbook"></p>
+<p>Let's start by creating a trainer. In cell <code>K13</code>, start typing in <code>=nnMakeSimpleGradientTrainer(</code> (Excel should offer to auto-complete that). Then, click  on the \(f_x\) symbol near the formula bar. This should open the formula dialog:</p>
+<p><img src="function-dialog.png" alt="nnMakeSimpleGradientTrainer function formula dialog"></p>
+<p>Fill in the function arguments with corresponding inputs from cells <code>K6</code> to <code>K12</code>. When done, formula in cell <code>K13</code> should read:</p>
+<pre><code>=nnMakeSimpleGradientTrainer(K6,K7,K8,K9,K10,K11,K12)
+</code></pre>
+<p>Submitting that will create a new NNX trainer object named &quot;Trainer&quot; (you can pick any other name).  You can find out more about <a href="../reference/nnMakeSimpleGradientTrainer.html"><code>nnMakeSimpleGradientTrainer()</code></a> and its arguments by reading the <a href="../reference/">NNX function reference</a>.</p>
+<h2>NNX objects</h2>
+<p>NNX add-in works by creating various objects: trainers, neural networks, sets of weights, and other objects, and then acting on these objects to do something useful.  All objects can be referenced by their name, like object named &quot;Trainer&quot; that we just created. Object names are critical for NNX, and for this reason most NNX functions require name of the object to create or act on as their first argument.</p>
+<p>You can delete all NNX objects at any time by calling function <a href="../reference/nnClearAllObjects.html"><code>nnClearAllObjects()</code></a>. Make sure to delete this function after you've called it so it does not keep deleting your objects every time you recalculate the workbook.</p>
+<p>Creating another object with the same name as an existing object will overwrite the existing object, and will cause all references to the old object to point to the new object. This can be sometimes conveniently exploited.</p>
+<h2>Training a perceptron</h2>
+<p>Now that we have a trainer, we can use it to train a <a href="https://en.wikipedia.org/wiki/Multilayer_perceptron">multilayer perceptron</a>. Type in or paste the following formula in cell <code>K20</code>:</p>
+<pre><code>=nnTrainMultilayerPerceptron(K16,K17,A33:D152,F33:H152,K18:K19)
+</code></pre>
+<p>This will crate and train a multilayer perceptron named &quot;Percy&quot;. The function will automatically determine the number of input and output nodes based on the inputs, though it needs to be provided number of hidden nodes to use. In this case, Percy will have 5 nodes in the first hidden layer and 4 nodes in the second. This is a bit of overkill for such simple input/output set, and will likely result in overfitting, but it's good for illustrating abilities of NNX.</p>
+<p>Note that the second argument, <code>K17</code>, refers to the trainer we created above through another formula reference. When formulas depend on previously created objects, it's a good idea to refer to the previously created objects by their cell reference rather than by name directly.  If we would have typed  <code>=nnTrainMultilayerPerceptron(K16,&quot;Trainer&quot;,A33:D152,...</code> instead, there is a chance that Excel formula evaluation engine would have evaluated <code>=nnTrainMultilayerPerceptron()</code> before creating the trainer using <code>=nnMakeSimpleGradientTrainer()</code>, resulting in error.</p>
+<h2>Using a perceptron</h2>
+<p>To use Percy the perceptron to evaluate new data points, we'll use function <a href="../reference/nnFeedForward.html"><code>nnFeedForward()</code></a>. In cell <code>M3</code>, type in</p>
+<pre><code>=nnFeedForward($K$20,A3:D3)
+</code></pre>
+<p>Once you'll hit enter, you'll notice that the function outputs have automatically expanded to nearby cells. All NNX functions that output arrays do this, so you'll need to watch out for accidentally overwriting existing cells. In this case, we've strategically left empty cells to the right of the original formula cell.</p>
+<p>You can now select the three cells, click on the square on the bottom right, and drag down to fill the formulas in cells all the way to the bottom.</p>
+<p><img src="dragging-cells-down.png" alt="Drag to expand nnFeedForward() formulas to the bottom."></p>
+<p>Results in the &quot;Predictions&quot; columns should automatically update to show the neural network's best guess for the each sample's species.</p>
+<p>To see how well our neural network did, in cell <code>S3</code> enter</p>
+<pre><code>=nnGetCrossEntropyError(F3:H3,M3:O3)
+</code></pre>
+<p>and then copy the cell and paste it in all cells below. When done, formulas in cells <code>K23</code> and <code>K24</code> should show the average errors for training and testing sets respectively. If prefer mean square error instead of cross-entropy error, you can replace <a href="../reference/nnGetCrossEntropyError.html"><code>nnGetCrossEntropyError()</code></a> with <a href="../reference/nnGetMeanSquareError.html"><code>nnGetMeanSquareError()</code></a>.</p>
+<h2>Directly creating a perceptron</h2>
+<p>We can't always re-train a neural network every time we want to use it.  Sheet 2 shows how to extract weights from Percy the perceptron using <a href="../reference/nnGetWeights.html"><code>nnGetWeights()</code></a>, and then repackage them into another identical perceptron named Percy2 using <a href="../reference/nnMakeArray.html"><code>nnMakeArray()</code></a>, <a href="../reference/nnMakeWeights.html"><code>nnMakeWeights()</code></a> and <a href="../reference/nnMakeMultilayerPerceptron.html"><code>nnMakeMultilayerPerceptron()</code></a>.  If you'd like to provide the weights yourself instead of using weights from a perceptron created by NNX, be sure to carefully follow the layout of weights arrays given in function reference for <a href="../reference/nnMakeMultilayerPerceptron.html"><code>nnMakeMultilayerPerceptron()</code></a>.</p>
+<h2>Next steps</h2>
+<p>That's it for the tutorial. To see more NNX functions and more details on them, head over to the <a href="../reference">NNX function reference</a>.</p>
+	</div>
+</div>
+<div id="page-navigation"> 
+	<div class="left">  </div> 
+	<div class="right">  </div> 
+	<div class="clear">&nbsp;</div>
+</div> 
+
+
+
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>Copyright 2016 Iouri Khramtsov.</p>
+			<p>
+				Code and binaries are licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>,
+				documentation licenced under <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+			</p>
+		</div>
+
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script src="https://code.jquery.com/jquery-2.2.0.min.js" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+	</body>
+</html>

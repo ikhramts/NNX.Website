@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+		<meta content="en-au" http-equiv="Content-Language" />
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>NNX add-in function reference</title>
+		<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Varela+Round' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/8.4/styles/default.min.css">
+		<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	</head>
+
+	<body>
+		<div class="outer-wrap">
+			<div id="content">
+				<nav class="navbar ">
+				  <div class="container-fluid">
+				    <!-- Brand and toggle get grouped for better mobile display -->
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <div class="navbar-brand" href="index.html">
+				      	<p class="h1"><span class="nnx-nn">NN</span><span class="nnx-x">X</span></p>
+				      	<p class="tagline">Neural networks for Excel</p>
+				      </div>
+				    </div>
+
+				    <!-- Collect the nav links, forms, and other content for toggling -->
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      <ul class="nav navbar-nav">
+				        <li><a href="/index.html"><i class="fa fa-home"></i>  Home</a></li>
+				        <li>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book"></i> Docs <span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				            <li><a href="/docs/tutorial/">Tutorial</a></li>
+				            <li><a href="/docs/reference/">Function reference</a></li>
+				            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">Sample workbook</a></li>
+				          </ul>
+						</li>
+				        <li><a href="https://github.com/ikhramts/nnx"><i class="fa fa-github"></i>  Source</a></li>
+				      </ul>
+				    </div><!-- /.navbar-collapse -->
+				  </div><!-- /.container-fluid -->
+				</nav>
+				<div id="content" class="container">
+					<div class="row">
+<div class="reference-nav col-md-3">
+    <h3>Trainers</h3>
+    <ul>
+        <li><a href="nnMakeSimpleGradientTrainer.html">nnMakeSimpleGradientTrainer</a></li>
+        <li><a href="nnMakeUntilDoneGradientTrainer.html">nnMakeUntilDoneGradientTrainer</a></li>
+    </ul>
+
+    <h3>Neural nets</h3>
+    <ul>
+        <li><a href="nnFeedForward.html">nnFeedForward</a></li>
+        <li><a href="nnGetWeights.html">nnGetWeights</a></li>
+        <li><a href="nnMakeArray.html">nnMakeArray</a></li>
+        <li><a href="nnMakeMultilayerPerceptron.html">nnMakeMultilayerPerceptron</a></li>
+        <li><a href="nnMakeWeights.html">nnMakeWeights</a></li>
+        <li><a href="nnTrainMultilayerPerceptron.html">nnTrainMultilayerPerceptron</a></li>
+    </ul>
+
+    <h3>Utilities</h3>
+    <ul>
+        <li><a href="nnClearAllObjects.html">nnClearAllObjects</a></li>
+        <li><a href="nnGetCrossEntropyError.html">nnGetCrossEntropyError</a></li>
+        <li><a href="nnGetMeanSquareErro.htmlr">nnGetMeanSquareError</a></li>
+    </ul>
+</div>
+<div class="reference-body col-md-9">
+    <h1>NNX add-in function reference</h1>
+    <p>Select a function on the left to see the details.</p>
+</div>
+</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>Copyright 2016 Iouri Khramtsov.</p>
+			<p>
+				Code and binaries are licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>,
+				documentation licenced under <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+			</p>
+		</div>
+
+		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script src="https://code.jquery.com/jquery-2.2.0.min.js" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+	</body>
+</html>

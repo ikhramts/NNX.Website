@@ -1,7 +1,7 @@
-html {height: 100%;}
+/*============================ Core styles ============================*/
+html { height: 100%; }
 
-body
-{
+body {
 	font-family: Segoe UI, sans-serif;
 	margin-left:auto;
 	margin-right: auto;
@@ -11,18 +11,17 @@ body
 	font-size: 11pt;
 }
 
-h1,h2,h3,h4,h5,h6
-{
+h1,h2,h3,h4,h5,h6 {
 	font-family: 'Varela Round', Helvetica, sans-serif;
 	font-weight: lighter;
 	color: black;
 }
-h1
-{
+
+h1 {
 	font-size: 2.5em;
 }
-h2
-{
+
+h2 {
 	font-size: 2em;
 	margin: 40px 0 0 0;
 }
@@ -40,8 +39,7 @@ p {
 	margin: 15px 0;
 }
 
-a
-{
+a {
 	text-decoration: none;
 	color: rgb(0, 146, 65);
 }
@@ -51,96 +49,31 @@ a:hover {
 	color: rgb(0, 146, 65);
 }
 
-ul
-{
+a code { color: rgb(0, 146, 65); }
+
+a:hover code { color: rgb(0, 146, 65); }
+
+ul {
 	margin:0;
 	padding:0;
 }
-li
-{
-	margin:0;
-	padding:0;
-	list-style-type:none;
-}
 
-.entry-container, .idea {
-	max-width: 900px;
-}
-
-.entry ul, .idea ul
-{
-	margin-left:10px;
-}
-.entry ul li, .idea ul li , .latest ul li
-{
-	margin-left:10px;
-	list-style-type:circle;
-}
-
-.entry ol li, .idea ol li , .latest ol li
-{
-	margin-left:10px;
+ol {
 	list-style-type: decimal;
 }
 
-
-#hometext a { font-size: 2em; margin-left: 5px; margin-right:10px; display: none; color: #41B1E1; font-weight: normal;  }
-#home:hover
-{
-	background:none;
-}
-#side
-{
-	float:right;
-	color: #41b1e1;
-	margin-left:50px;
-}
-#side .section
-{
-	margin-top:50px;
-	margin-bottom: 50px;
+li {
+	margin:0;
 	padding:0;
 }
-#side .section ul
-{
-	font-size:2em;
-}
 
-.outer-wrap {
-	min-height: 100%;
-}
-
-#content
-{
-	width:auto;
-	overflow: auto;
-	padding-bottom: 90px;
-}
-img
-{
+img {
   width: auto !important;
   height: auto !important;
   margin: 20px auto;
   display:block;
   border: none;
   align-self: center;
-}
-.postdate
-{
-	font-size: 0.8em;
-	font-weight: bold;
-}
-
-.olderpostdate
-{
-	font-size: 0.8em;
-	color : #aaaaaa;
-	width: 150px;
-	margin-right: 15px;
-}
-.idea h1, .entry h1
-{
-	margin-bottom: 5px;
 }
 
 .left {
@@ -149,10 +82,6 @@ img
 
 .right {
     float: right;
-}
-
-.clear {
-    clear: both;
 }
 
 .footer {
@@ -174,13 +103,52 @@ img
 {
 	body { width:auto; margin:10px; }
 	#content { width : 100%; }
-	#side { float:none; width:100%; margin-left:0px; }
-	#side .section { margin-top:0; margin-right: 30px; }
-	#side .section ul { font-size:1.2em; padding:0px; margin:5px; }
-	#side li { display: inline; margin-left:3px; margin-right: 3px; font-weight: normal; }
-	#home { display: none;  }
-	#hometext a { display: inline;  }
 	h1 { margin-top: -0px;}
+}
+
+/*============================ Posts ============================*/
+.entry-container, .idea {
+	max-width: 900px;
+}
+
+.entry ul, .idea ul {
+	margin-left:10px;
+}
+
+.entry ul li, .idea ul li , .latest ul li {
+	margin-left:10px;
+	list-style-type:circle;
+}
+
+.entry ol li, .idea ol li , .latest ol li {
+	margin-left:10px;
+	list-style-type: decimal;
+}
+
+.outer-wrap {
+	min-height: 100%;
+}
+
+#content {
+	width:auto;
+	overflow: auto;
+	padding-bottom: 90px;
+}
+
+.postdate {
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+.olderpostdate {
+	font-size: 0.8em;
+	color : #aaaaaa;
+	width: 150px;
+	margin-right: 15px;
+}
+
+.idea h1, .entry h1 {
+	margin-bottom: 5px;
 }
 
 /*============================ Misc fixes ============================*/
@@ -189,17 +157,6 @@ img
 }
 
 /*============================ Bootstrap fixes ============================*/
-.container, .container-fluid {
-	/*padding: 0;*/
-}
-
-.col-md-1:first-child, .col-md-2:first-child, .col-md-3:first-child,
-.col-md-4:first-child, .col-md-5:first-child, .col-md-6:first-child,
-.col-md-7:first-child, .col-md-8:first-child, .col-md-9:first-child,
-.col-md-10:first-child, .col-md-11:first-child, .col-md-12:first-child {
-	/*padding-left: 0;*/
-}
-
 .btn-success {
 	background-color: rgb(3,148,68);
 	border: none;
@@ -281,3 +238,9 @@ nav .navbar-nav > li > a:hover, nav .navbar-nav > li > a:focus {
 	margin-top: 23px;
 	margin-bottom: 0;
 }
+
+/*============================ Reference pages ============================*/
+.reference-nav li {
+	list-style-type: none;
+}
+
