@@ -61,7 +61,39 @@
   
 	
 	<url>
+		<loc>http://nnx-addin.org/docs/reference/MultilayerPerceptron.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/reference/nnFeedForward.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/reference/nnGetWeights.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
 		<loc>http://nnx-addin.org/docs/reference/nnMakeArray.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/reference/nnMakeMakeWeights.html</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>

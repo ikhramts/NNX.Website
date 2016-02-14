@@ -16,41 +16,43 @@
 	<body>
 		<div class="outer-wrap">
 			<div id="content">
-				<nav class="navbar ">
-				  <div class="container-fluid">
-				    <!-- Brand and toggle get grouped for better mobile display -->
-				    <div class="navbar-header">
-				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				        <span class="sr-only">Toggle navigation</span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				        <span class="icon-bar"></span>
-				      </button>
-				      <div class="navbar-brand" href="index.html">
-				      	<p class="h1"><span class="nnx-nn">NN</span><span class="nnx-x">X</span></p>
-				      	<p class="tagline">Neural networks for Excel</p>
-				      </div>
-				    </div>
+				<div class="navbar-wrap">
+					<nav class="navbar ">
+					  <div class="container-fluid">
+					    <!-- Brand and toggle get grouped for better mobile display -->
+					    <div class="navbar-header">
+					      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					        <span class="sr-only">Toggle navigation</span>
+							<i class="fa fa-bars"></i>
 
-				    <!-- Collect the nav links, forms, and other content for toggling -->
-				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				      <ul class="nav navbar-nav">
-				        <li><a href="/index.html"><i class="fa fa-home"></i>  Home</a></li>
-				        <li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book"></i> Docs <span class="caret"></span></a>
-				          <ul class="dropdown-menu">
-				            <li><a href="/docs/tutorial/">Tutorial</a></li>
-				            <li><a href="/docs/reference/">Function reference</a></li>
-				            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">Sample workbook</a></li>
-				          </ul>
-						</li>
-				        <li><a href="https://github.com/ikhramts/nnx"><i class="fa fa-github"></i>  Source</a></li>
-				      </ul>
-				    </div><!-- /.navbar-collapse -->
-				  </div><!-- /.container-fluid -->
-				</nav>
-				<div id="content" class="container">
-					<div class="entry-container">
+					      </button>
+					      <div class="navbar-brand" href="index.html">
+					      	<p class="h1"><a href="/"><span class="nnx-nn">NN</span><span class="nnx-x">X</span></a></p>
+					      	<p class="tagline"><a href="/">Neural networks for Excel</a></p>
+					      </div>
+					    </div>
+
+					    <!-- Collect the nav links, forms, and other content for toggling -->
+					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					      <ul class="nav navbar-nav">
+					        <li><a href="/index.html"><i class="fa fa-home"></i>  Home</a></li>
+					        <li>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book"></i> Docs <span class="caret"></span></a>
+					          <ul class="dropdown-menu">
+					            <li><a href="/docs/tutorial/">Tutorial</a></li>
+					            <li><a href="/docs/reference/">Function reference</a></li>
+					            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">Sample workbook</a></li>
+					          </ul>
+							</li>
+					        <li><a href="https://github.com/ikhramts/nnx"><i class="fa fa-github"></i>  Source</a></li>
+					      </ul>
+					    </div><!-- /.navbar-collapse -->
+					  </div><!-- /.container-fluid -->
+					</nav>
+				</div>
+				<div class="content-wrap">
+					<div class="container">
+						<div class="entry-container">
 	<div class='entry'>
 		<h1> Tutorial </h1>
 		<span class="postdate">12 February, 2016
@@ -110,16 +112,19 @@
 
 
 
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="footer">
-			<p>Copyright 2016 Iouri Khramtsov.</p>
-			<p>
-				Code and binaries are licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>,
-				documentation licenced under <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-			</p>
+		<div class="footer-wrap">
+			<div class="footer">
+				<p>Copyright 2016 Iouri Khramtsov.</p>
+				<p>
+					Code and binaries are licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>,
+					documentation licenced under <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+				</p>
+			</div>
 		</div>
 
 		<script src="//cdn.jsdelivr.net/highlight.js/8.4/highlight.min.js"></script>
@@ -127,5 +132,10 @@
 		<script src="https://code.jquery.com/jquery-2.2.0.min.js" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+			  TeX: { equationNumbers: { autoNumber: "AMS" } }
+			});
+		</script>
 	</body>
 </html>

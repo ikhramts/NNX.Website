@@ -4,7 +4,7 @@
 		<meta content="en-au" http-equiv="Content-Language" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>nnMakeSimpleGradientTrainer</title>
+		<title>Multilayer Perceptron</title>
 		<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Varela+Round' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -86,83 +86,13 @@
     </ul>
 </div>
 <div class="reference-body col-md-9">
-    <h1>nnMakeSimpleGradientTrainer</h1>
-    <h2>Inputs/outputs</h2>
-<table>
-<thead>
-<tr>
-<th>Arguments</th>
-<th style="text-align:center"></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Name</code></td>
-<td style="text-align:center">string, not empty</td>
-<td>Name of the trainer object to create.</td>
-</tr>
-<tr>
-<td><code>NumEpochs</code></td>
-<td style="text-align:center">integer, &gt;0</td>
-<td>Number of backpropagation steps to perform during training. Each backpropagation step includes evaluating a batch of one or more training points.</td>
-</tr>
-<tr>
-<td><code>LearningRate</code></td>
-<td style="text-align:center">number, &gt;0</td>
-<td>Used to determine the impact of gradient calculated in each backpropagation step on the neural network's weights.</td>
-</tr>
-<tr>
-<td><code>Momentum</code></td>
-<td style="text-align:center">number, ≥0</td>
-<td>Used to determine the impact of gradient calculated in <em>previous</em> backpropagation step on the neural network's weights.</td>
-</tr>
-<tr>
-<td><code>QuadraticRegularization</code></td>
-<td style="text-align:center">number, ≥0</td>
-<td>Higher values force weights to stay closer to 0, hopefully preventing overfitting.</td>
-</tr>
-<tr>
-<td><code>BatchSize</code></td>
-<td style="text-align:center">integer, &gt;0</td>
-<td>Number of training samples to include in every epoch.</td>
-</tr>
-<tr>
-<td><code>Seed</code></td>
-<td style="text-align:center">integer, ≥0</td>
-<td>Seed for random number generator.  Training runs with the same seed and same input parameters should always produce identical results.</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Returns</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Name of the newly created trainer object.</td>
-</tr>
-</tbody>
-</table>
-<h2>Details</h2>
-<p>Simple Gradient Trainer trains neural networks by applying <code>NumEpochs</code> backpropagation steps, calculating the gradient of the error function with respect to weights at every step and moving the weights in that direction, with some adjustments.</p>
-<p>More specifically, for every backpropagation step \(1 \leq t \leq \) <code>NumEpochs</code>, the trainer selects <code>BatchSize</code> samples from the training set (at random, with replacement), and calculates the average of gradients of the network's error for each sample with respect to weights to arrive at the estimated overall gradient of network's error given its current weights, \(\nabla E(\mathbf{w}_{t-1})\).  The trainer then adds adjustments from <code>Momentum</code> (\(m\)) and <code>QuadraticRegularization</code> (\(q\)) to arrive at adjusted gradient \(\nabla_t^\prime\) to apply to the weights in this step:</p>
-<p>\begin{equation}
-\nabla_t^\prime = \nabla E(\mathbf{w}_{t-1}) + m \nabla E(\mathbf{w}_{t-2}) + q \mathbf{w}_{t-1}
-\end{equation}</p>
-<p>The trainer then uses the adjusted gradient to calculate the new estimate for weights:</p>
-<p>\begin{equation}
-\mathbf{w}_t = \mathbf{w}_{t-1} - \mathrm{LearningRate} \cdot \nabla_t^\prime
-\end{equation}</p>
-<p>These weights are then assigned to the neural network for use in the next backpropagation step.</p>
-<h3>Meaning of learning rate, momentum, quadratic regularization</h3>
-<p>In formula (1) above, <code>Momentum</code> (\(m\)) term may help lessen effect of oscillations across a valley by adding previous step's gradient to this step's gradient,  though high momentums will lead to slower convergence.</p>
-<p>The <code>QuadraticRegularization</code> (\(q\)) term forces the gradient to point increasingly toward zero as the weights become bigger, thus preventing the weights from becoming too large or too small.  This lowers risk of overfitting, and ensures that the weights remain in the range where they are sensitive enough to corrections in future steps.</p>
-<p>In formula (2), <code>LearningRate</code> determines the overall impact of the adjustment in each step, with higher values leading to higher adjustments, but also possibly leading to overshooting the optimum weights.</p>
-<h3>Role of the neural network</h3>
-<p>The formulas above have purposefully omitted details on how to calculate the neural network's error gradient, \(\nabla E(\mathbf{w}_{t-1})\).  Like any other trainer in NNX, Simple Gradient Trainer is a generic trainer that can act on any neural network supported by NNX; the specifics of calculating the gradient are therefore provided by the neural network that the trainer acts on. These details can be found on reference page for the neural network, e.g. <a href="MultilayerPerceptron.html">Multilayer perceptron</a>.</p>
+    <h1>Multilayer Perceptron</h1>
+    <h2>Overview</h2>
+<h2>Functions</h2>
+<h2>Calculation details</h2>
+<h3>Feed forward</h3>
+<h3>Gradient calculation</h3>
+<h2>Layout of weights</h2>
 </div>
 </div>
 					</div>
