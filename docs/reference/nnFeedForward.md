@@ -3,6 +3,10 @@ layout: "function-reference"
 title: "nnFeedForward"
 ---
 
+For calculation details, see reference page for the neural network being used, e.g. [Multilayer perceptron](MultilayerPerceptron.html).
+
+The output array may automatically expand over cells that are in use, so make sure to leave enough empty cells to the right of the cell containing the formula.
+
 ## Inputs/outputs
 
 | Arguments   | | |
@@ -14,8 +18,4 @@ title: "nnFeedForward"
 |-----------|
 | Auto-expanding horizontal array of numbers. |
 
-## Remarks
 
-For calculation details, see reference page for the neural network being used, e.g. [Multilayer perceptron](MultilayerPerceptron.html).
-
-The output array may automatically expand over cells that are in use, so make sure to leave enough empty cells to the right of the cell containing the formula.

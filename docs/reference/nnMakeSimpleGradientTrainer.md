@@ -3,6 +3,9 @@ layout: "function-reference"
 title: "nnMakeSimpleGradientTrainer"
 ---
 
+`SimpleGradientTrainer` trains neural networks by applying `NumEpochs` backpropagation steps, calculating the gradient of the error function with respect to weights at every step and moving the weights in that direction, with some adjustments.  Scroll below for details.
+
+
 ## Inputs/outputs
 
 
@@ -20,12 +23,9 @@ title: "nnMakeSimpleGradientTrainer"
 |-----------|
 | Name of the newly created trainer object. |
 
-
 ## Details
 
-Simple Gradient Trainer trains neural networks by applying `NumEpochs` backpropagation steps, calculating the gradient of the error function with respect to weights at every step and moving the weights in that direction, with some adjustments.
-
-More specifically, for every backpropagation step \\(1 \leq t \leq \\) `NumEpochs`, the trainer selects `BatchSize` samples from the training set (at random, with replacement), and calculates the average of gradients of the network's error for each sample with respect to weights to arrive at the estimated overall gradient of network's error given its current weights, \\(\nabla E(\mathbf{w}_{t-1})\\).  The trainer then adds adjustments from `Momentum` (\\(m\\)) and `QuadraticRegularization` (\\(q\\)) to arrive at adjusted gradient \\(\nabla_t^\prime\\) to apply to the weights in this step:
+For every backpropagation step \\(1 \leq t \leq \\) `NumEpochs`, `SimpleGradientTrainer` selects `BatchSize` samples from the training set (at random, with replacement), and calculates the average of gradients of the network's error for each sample with respect to weights to arrive at the estimated overall gradient of network's error given its current weights, \\(\nabla E(\mathbf{w}_{t-1})\\).  The trainer then adds adjustments from `Momentum` (\\(m\\)) and `QuadraticRegularization` (\\(q\\)) to arrive at adjusted gradient \\(\nabla_t^\prime\\) to apply to the weights in this step:
 
 \begin{equation}
 \nabla_t^\prime = \nabla E(\mathbf{w}\_{t-1}) + m \nabla E(\mathbf{w}\_{t-2}) + q \mathbf{w}\_{t-1}
@@ -49,4 +49,4 @@ In formula (2), `LearningRate` determines the overall impact of the adjustment i
 
 ### Role of the neural network
 
-The formulas above have purposefully omitted details on how to calculate the neural network's error gradient, \\(\nabla E(\mathbf{w}_{t-1})\\).  Like any other trainer in NNX, Simple Gradient Trainer is a generic trainer that can act on any neural network supported by NNX; the specifics of calculating the gradient are therefore provided by the neural network that the trainer acts on. These details can be found on reference page for the neural network, e.g. [Multilayer perceptron](MultilayerPerceptron.html).
+The formulas above have purposefully omitted details on how to calculate the neural network's error gradient, \\(\nabla E(\mathbf{w}_{t-1})\\).  Like any other trainer in NNX, `SimpleGradientTrainer` is a generic trainer that can act on any neural network supported by NNX; the specifics of calculating the gradient are therefore provided by the neural network that the trainer acts on. These details can be found on reference page for the neural network, e.g. [Multilayer perceptron](MultilayerPerceptron.html).

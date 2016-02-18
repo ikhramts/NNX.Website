@@ -4,7 +4,7 @@
 		<meta content="en-au" http-equiv="Content-Language" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>nnGetWeights</title>
+		<title>nnMakeUntilDoneGradientTrainer</title>
 		<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Varela+Round' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -88,9 +88,9 @@
     </ul>
 </div>
 <div class="reference-body col-md-9">
-    <h1>nnGetWeights</h1>
-    <p>Returns weights for connections leading to the specified layer in the neural network.  For details on the layout of weights in the returned array see reference page for the neural network being used, e.g. <a href="MultilayerPerceptron.html">Multilayer perceptron</a>.</p>
-<p>The output array may automatically expand over cells that are in use, so make sure to leave enough empty cells below the cell containing the formula.</p>
+    <h1>nnMakeUntilDoneGradientTrainer</h1>
+    <p><code>UntilDoneGradientTrainer</code> works similarly to <a href="nnMakeSimpleGradientTrainer.html"><code>SimpleGradientTrainer</code></a>, except it splits the provided training set into a training and validation portion in proportion to <code>ValidationSetFraction</code> argument. During training, the trainer checks periodically whether the overall error on the validation set has improved, and if it has not improved after a certain number of epochs, it aborts training and sets the final neural network weights to the value that produced the best result so far.</p>
+<p>This approach is designed to lower chance of overfitting compared to <code>SimpleGradientTrainer</code>, though as a tradeoff it reduces the total number of samples available for training.</p>
 <h2>Inputs/outputs</h2>
 <table>
 <thead>
@@ -104,12 +104,52 @@
 <tr>
 <td><code>Name</code></td>
 <td style="text-align:center">string, not empty</td>
-<td>Name of the neural network to use.</td>
+<td>Name of the trainer object to create.</td>
 </tr>
 <tr>
-<td><code>Layer</code></td>
-<td style="text-align:center">integer</td>
-<td>Layer of the neural network for which to produce weights, with layer 1 layer being the layer of connections leading to the first set of hidden nodes.</td>
+<td><code>NumEpochs</code></td>
+<td style="text-align:center">integer, &gt;0</td>
+<td>Maximum number of backpropagation steps to perform during training. Each backpropagation step includes evaluating a batch of one or more training points.</td>
+</tr>
+<tr>
+<td><code>LearningRate</code></td>
+<td style="text-align:center">number, &gt;0</td>
+<td>Used to determine the impact of gradient calculated in each backpropagation step on the neural network's weights.</td>
+</tr>
+<tr>
+<td><code>Momentum</code></td>
+<td style="text-align:center">number, ≥0</td>
+<td>Used to determine the impact of gradient calculated in previous backpropagation step on the neural network's weights.</td>
+</tr>
+<tr>
+<td><code>QuadraticRegularization</code></td>
+<td style="text-align:center">number, ≥0</td>
+<td>Higher values force weights to stay closer to 0, hopefully preventing overfitting.</td>
+</tr>
+<tr>
+<td><code>BatchSize</code></td>
+<td style="text-align:center">integer, &gt;0</td>
+<td>Number of training samples to include in every epoch.</td>
+</tr>
+<tr>
+<td><code>ValidationSetFraction</code></td>
+<td style="text-align:center">number, strictly between 0 and 1</td>
+<td>Portion of the training set to use as validation set to check whether training has improved performance of the neural network.</td>
+</tr>
+<tr>
+<td><code>MaxEpochsWithoutImprovement</code></td>
+<td style="text-align:center">integer, &gt;0</td>
+<td>Training will abort after there is no error improvement on validation set after this number of backpropagation steps.</td>
+</tr>
+<tr>
+<td><code>EpochsBetweenValidations</code></td>
+<td style="text-align:center">number, &gt;0</td>
+<td>Number of backpropagation steps to perform between checking for error improvement on validation set.</td>
+</tr>
+<tr>
+<td><code>Seed</code></td>
+<td style="text-align:center">integer, ≥0</td>
+<td>Seed for random number generator. Training runs with the same seed and same input parameters should always produce identical results.</td>
 </tr>
 </tbody>
 </table>
@@ -121,10 +161,13 @@
 </thead>
 <tbody>
 <tr>
-<td>Auto-expanding vertical array of numbers.</td>
+<td>Name of the newly created trainer object.</td>
 </tr>
 </tbody>
 </table>
+<h2>Details</h2>
+<p>Given a training sample with \(N\) elements, before starting a training run, <code>UntilDoneGradientTrainer</code> selects <code>ValidationSetFraction</code>\(\cdot N\) samples to serve as validation set (randomly, without replacement).  These samples are removed from the training set and are not used for gradient calculations.  After that, the trainer proceeds with backpropagation algorithm as described in <a href="nnMakeSimpleGradientTrainer.html"><code>nnMakeSimpleGradientTrainer()</code></a>, except every <code>EpochsBetweenValidations</code> epochs it calculates the total error on the validation set.  If the trainer does not observe improvement in error after <code>MaxEpochsWithoutImprovement</code> epochs, it aborts the training run.  If not, the trainer stops after <code>NumEpochs</code> epochs.</p>
+<p>Regardless of how the trainer stopped, it selects the weights that have produced lowest error on the validation set so far as the final weights for the neural network.</p>
 </div>
 </div>
 					</div>

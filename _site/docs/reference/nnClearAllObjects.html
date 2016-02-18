@@ -4,7 +4,7 @@
 		<meta content="en-au" http-equiv="Content-Language" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>nnGetWeights</title>
+		<title>nnClearAllObjects</title>
 		<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Varela+Round' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -88,28 +88,19 @@
     </ul>
 </div>
 <div class="reference-body col-md-9">
-    <h1>nnGetWeights</h1>
-    <p>Returns weights for connections leading to the specified layer in the neural network.  For details on the layout of weights in the returned array see reference page for the neural network being used, e.g. <a href="MultilayerPerceptron.html">Multilayer perceptron</a>.</p>
-<p>The output array may automatically expand over cells that are in use, so make sure to leave enough empty cells below the cell containing the formula.</p>
+    <h1>nnClearAllObjects</h1>
+    <p>Deletes all named objects from NNX internal object store.  Any references to previously created objects will become invalid and will result in errors.</p>
+<p>After using this function, make sure to delete it from the cell containing it so any further recalculations would not result in re-deleting any newly made objects.</p>
 <h2>Inputs/outputs</h2>
 <table>
 <thead>
 <tr>
 <th>Arguments</th>
-<th style="text-align:center"></th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>Name</code></td>
-<td style="text-align:center">string, not empty</td>
-<td>Name of the neural network to use.</td>
-</tr>
-<tr>
-<td><code>Layer</code></td>
-<td style="text-align:center">integer</td>
-<td>Layer of the neural network for which to produce weights, with layer 1 layer being the layer of connections leading to the first set of hidden nodes.</td>
+<td>None.</td>
 </tr>
 </tbody>
 </table>
@@ -121,7 +112,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Auto-expanding vertical array of numbers.</td>
+<td>String &quot;OK&quot;.</td>
 </tr>
 </tbody>
 </table>

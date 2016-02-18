@@ -2,6 +2,7 @@
 /* Colors */
 @nnx-green-fg: rgb(3,148,68);
 @nnx-green-bg: rgb(0, 146, 65);
+@nnx-green-bg-active: lighten(@nnx-green-bg, 3%);
 @nnx-gray-fg: #555;
 @nnx-gray-bg: #888;
 
@@ -10,7 +11,7 @@
 
 @table-border-color: darken(@edges-bg, 10%);
 
-/* Offsets */
+/* Sizes */
 @content-width: 1170px;
 @navbar-height: 90px;
 @footer-height: 90px;
@@ -47,7 +48,7 @@ h1 {
 
 h2 {
 	font-size: 2em;
-	margin: 40px 0 0 0;
+	margin: 30px 0 0 0;
 }
 
 h3 {
@@ -81,9 +82,14 @@ a {
 	}
 }
 
+code {
+	background: transparent;
+	font-size: 11pt;
+	padding: 0 2px;
+}
+
 ul {
-	margin:0;
-	padding:0;
+	padding-left: 20px;
 }
 
 ol {
@@ -91,9 +97,17 @@ ol {
 }
 
 li {
-	margin:0;
-	padding:0;
+	list-style-type: none;
+// 	margin:0;
+// 	padding:0;
+
+	&:before {
+		content: "•";
+		padding-right: 8px;
+	}
 }
+
+
 
 img {
   width: auto !important;
@@ -155,22 +169,6 @@ img {
 	max-width: 900px;
 }
 
-.entry ul, .idea ul {
-	margin-left:10px;
-}
-
-.entry, .idea, .latest {
-	ul li {
-		margin-left: 10px;
-		list-style-type: circle;
-	}
-	
-	ol li {
-		margin-left: 10px;
-		list-style-type: decimal;
-	}
-}
-
 .outer-wrap {
 	min-height: 100%;
 }
@@ -196,10 +194,14 @@ img {
 	clear: both;
 }
 
-/*============================ Bootstrap fixes ============================*/
+/*============================ Bootstrap adjustments ============================*/
 .btn-success {
 	background-color: @nnx-green-bg;
 	border: none;
+	
+	&:hover {
+		background: @nnx-green-bg-active;
+	}
 }
 
 /*============================ Tables ============================*/
@@ -245,6 +247,10 @@ nav.navbar {
 	
 	.navbar-header {
 		height: @navbar-height;
+	}
+	
+	li:before {
+		content: none;
 	}
 	
 	.container-fluid {
@@ -333,6 +339,8 @@ ul.nav.navbar-nav li {
 .downloads {
 	margin: 0 0 0 0;
 	text-align: center;
+	
+	
 }
 
 .feature-list {
@@ -352,8 +360,17 @@ img.hero-image {
 .reference-nav { 
 	height: 100%;
 	
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	
 	li {
 		list-style-type: none;
+		
+		&:before {
+			content: none;
+		}
 	}
 	
 	ul.sublist {
@@ -369,5 +386,9 @@ img.hero-image {
 	@media (min-width: @screen-md) {
 		border-left: 1px solid @edges-bg;
 		padding-bottom: 20px;
+	}
+	
+	h1 {
+		margin-bottom: 20px;
 	}
 }

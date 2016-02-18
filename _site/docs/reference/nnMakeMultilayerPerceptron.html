@@ -4,7 +4,7 @@
 		<meta content="en-au" http-equiv="Content-Language" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>nnMakeWeights</title>
+		<title>nnMakeMultilayerPerceptron</title>
 		<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Varela+Round' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -41,7 +41,9 @@
 					          <ul class="dropdown-menu">
 					            <li><a href="/docs/tutorial/">Tutorial</a></li>
 					            <li><a href="/docs/reference/">Function reference</a></li>
-					            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">Sample workbook</a></li>
+					            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">
+									Sample workbook
+								</a></li>
 					          </ul>
 							</li>
 					        <li><a href="https://github.com/ikhramts/nnx"><i class="fa fa-github"></i>  Source</a></li>
@@ -82,12 +84,13 @@
     <ul>
         <li><a href="nnClearAllObjects.html">nnClearAllObjects</a></li>
         <li><a href="nnGetCrossEntropyError.html">nnGetCrossEntropyError</a></li>
-        <li><a href="nnGetMeanSquareErro.htmlr">nnGetMeanSquareError</a></li>
+        <li><a href="nnGetMeanSquareError.html">nnGetMeanSquareError</a></li>
     </ul>
 </div>
 <div class="reference-body col-md-9">
-    <h1>nnMakeWeights</h1>
-    <h2>Inputs/outputs</h2>
+    <h1>nnMakeMultilayerPerceptron</h1>
+    <p>Directly creates a <a href="MultilayerPerceptron.html">multilayer perceptron</a> that is ready to use in calculations. See documentation for <a href="MultilayerPerceptron.html">multilayer perceptron</a> for more details.</p>
+<h2>Inputs/outputs</h2>
 <table>
 <thead>
 <tr>
@@ -100,12 +103,27 @@
 <tr>
 <td><code>Name</code></td>
 <td style="text-align:center">string, not empty</td>
-<td>Name of the Weights object to create.</td>
+<td>Name of the multilayer perceptron object to create.</td>
 </tr>
 <tr>
-<td><code>WeightArrays</code></td>
-<td style="text-align:center">array of strings</td>
-<td>Vertical or horizontal array of references to arrays created using <a href="nnMakeArray.html"><code>nnMakeArray()</code></a>, each array representing a layer of the neural network.</td>
+<td><code>NumInputs</code></td>
+<td style="text-align:center">integer, &gt; 0</td>
+<td>Number of input nodes, not including input bias.</td>
+</tr>
+<tr>
+<td><code>NumOutputs</code></td>
+<td style="text-align:center">integer, &gt; 0</td>
+<td>Number of output nodes.</td>
+</tr>
+<tr>
+<td><code>HiddenLayerSizes</code></td>
+<td style="text-align:center">array of integers</td>
+<td>Number of nodes in each hidden layer, not including biases. Each element must be greater than zero.</td>
+</tr>
+<tr>
+<td><code>Weights</code></td>
+<td style="text-align:center">string, not empty</td>
+<td>Name of the weights object created using <a href="nnMakeWeights.html"><code>nnMakeWeights()</code></a>.</td>
 </tr>
 </tbody>
 </table>
@@ -117,12 +135,10 @@
 </thead>
 <tbody>
 <tr>
-<td>Name of the newly created Weights object.</td>
+<td>Name of the newly created neural network object.</td>
 </tr>
 </tbody>
 </table>
-<h2>Remarks</h2>
-<p>Number of values in each .</p>
 </div>
 </div>
 					</div>
@@ -147,7 +163,14 @@
 		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 		<script type="text/x-mathjax-config">
 			MathJax.Hub.Config({
-			  TeX: { equationNumbers: { autoNumber: "AMS" } }
+			  TeX: { equationNumbers: { autoNumber: "AMS" } },
+			  "HTML-CSS": {
+			    preferredFont: "Latin-Modern",
+				webFont: "Latin-Modern"
+			},
+			  SVG: {
+				  font: "Latin-Modern"
+			  }
 			});
 		</script>
 	</body>

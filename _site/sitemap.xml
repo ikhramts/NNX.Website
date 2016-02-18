@@ -68,8 +68,34 @@
 	
   
 	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/reference/nnClearAllObjects.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
 	<url>
 		<loc>http://nnx-addin.org/docs/reference/nnFeedForward.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/reference/nnGetCrossEntropyError.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/reference/nnGetMeanSquareError.html</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
@@ -93,7 +119,7 @@
   
 	
 	<url>
-		<loc>http://nnx-addin.org/docs/reference/nnMakeMakeWeights.html</loc>
+		<loc>http://nnx-addin.org/docs/reference/nnMakeMultilayerPerceptron.html</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>
@@ -102,6 +128,30 @@
 	
 	<url>
 		<loc>http://nnx-addin.org/docs/reference/nnMakeSimpleGradientTrainer.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/reference/nnMakeUntilDoneGradientTrainer.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/reference/nnMakeWeights.html</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.00</priority>
+	</url>
+	
+  
+	
+	<url>
+		<loc>http://nnx-addin.org/docs/reference/nnTrainMultilayerPerceptron.html</loc>
 		<changefreq>daily</changefreq>
 		<priority>1.00</priority>
 	</url>

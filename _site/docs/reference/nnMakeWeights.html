@@ -4,7 +4,7 @@
 		<meta content="en-au" http-equiv="Content-Language" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>nnGetWeights</title>
+		<title>nnMakeWeights</title>
 		<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Varela+Round' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -88,9 +88,8 @@
     </ul>
 </div>
 <div class="reference-body col-md-9">
-    <h1>nnGetWeights</h1>
-    <p>Returns weights for connections leading to the specified layer in the neural network.  For details on the layout of weights in the returned array see reference page for the neural network being used, e.g. <a href="MultilayerPerceptron.html">Multilayer perceptron</a>.</p>
-<p>The output array may automatically expand over cells that are in use, so make sure to leave enough empty cells below the cell containing the formula.</p>
+    <h1>nnMakeWeights</h1>
+    <p>Creates a weights object from arrays created using <a href="nnMakeArray.html"><code>nnMakeArray()</code></a>.</p>
 <h2>Inputs/outputs</h2>
 <table>
 <thead>
@@ -104,12 +103,12 @@
 <tr>
 <td><code>Name</code></td>
 <td style="text-align:center">string, not empty</td>
-<td>Name of the neural network to use.</td>
+<td>Name of the Weights object to create.</td>
 </tr>
 <tr>
-<td><code>Layer</code></td>
-<td style="text-align:center">integer</td>
-<td>Layer of the neural network for which to produce weights, with layer 1 layer being the layer of connections leading to the first set of hidden nodes.</td>
+<td><code>WeightArrays</code></td>
+<td style="text-align:center">array of strings</td>
+<td>Vertical or horizontal array of references to arrays created using <a href="nnMakeArray.html"><code>nnMakeArray()</code></a>, each array representing a layer of connections the neural network. Number of values in each array must match the expected number of weights in corresponding layer. For layout of weights in each layer, see reference page for the relevant neural network, e.g. <a href="MultilayerPerceptron.html">Multilayer perceptron</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -121,7 +120,7 @@
 </thead>
 <tbody>
 <tr>
-<td>Auto-expanding vertical array of numbers.</td>
+<td>Name of the newly created Weights object.</td>
 </tr>
 </tbody>
 </table>

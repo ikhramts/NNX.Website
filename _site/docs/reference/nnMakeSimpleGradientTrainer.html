@@ -41,7 +41,9 @@
 					          <ul class="dropdown-menu">
 					            <li><a href="/docs/tutorial/">Tutorial</a></li>
 					            <li><a href="/docs/reference/">Function reference</a></li>
-					            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">Sample workbook</a></li>
+					            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">
+									Sample workbook
+								</a></li>
 					          </ul>
 							</li>
 					        <li><a href="https://github.com/ikhramts/nnx"><i class="fa fa-github"></i>  Source</a></li>
@@ -82,12 +84,13 @@
     <ul>
         <li><a href="nnClearAllObjects.html">nnClearAllObjects</a></li>
         <li><a href="nnGetCrossEntropyError.html">nnGetCrossEntropyError</a></li>
-        <li><a href="nnGetMeanSquareErro.htmlr">nnGetMeanSquareError</a></li>
+        <li><a href="nnGetMeanSquareError.html">nnGetMeanSquareError</a></li>
     </ul>
 </div>
 <div class="reference-body col-md-9">
     <h1>nnMakeSimpleGradientTrainer</h1>
-    <h2>Inputs/outputs</h2>
+    <p><code>SimpleGradientTrainer</code> trains neural networks by applying <code>NumEpochs</code> backpropagation steps, calculating the gradient of the error function with respect to weights at every step and moving the weights in that direction, with some adjustments.  Scroll below for details.</p>
+<h2>Inputs/outputs</h2>
 <table>
 <thead>
 <tr>
@@ -147,8 +150,7 @@
 </tbody>
 </table>
 <h2>Details</h2>
-<p>Simple Gradient Trainer trains neural networks by applying <code>NumEpochs</code> backpropagation steps, calculating the gradient of the error function with respect to weights at every step and moving the weights in that direction, with some adjustments.</p>
-<p>More specifically, for every backpropagation step \(1 \leq t \leq \) <code>NumEpochs</code>, the trainer selects <code>BatchSize</code> samples from the training set (at random, with replacement), and calculates the average of gradients of the network's error for each sample with respect to weights to arrive at the estimated overall gradient of network's error given its current weights, \(\nabla E(\mathbf{w}_{t-1})\).  The trainer then adds adjustments from <code>Momentum</code> (\(m\)) and <code>QuadraticRegularization</code> (\(q\)) to arrive at adjusted gradient \(\nabla_t^\prime\) to apply to the weights in this step:</p>
+<p>For every backpropagation step \(1 \leq t \leq \) <code>NumEpochs</code>, <code>SimpleGradientTrainer</code> selects <code>BatchSize</code> samples from the training set (at random, with replacement), and calculates the average of gradients of the network's error for each sample with respect to weights to arrive at the estimated overall gradient of network's error given its current weights, \(\nabla E(\mathbf{w}_{t-1})\).  The trainer then adds adjustments from <code>Momentum</code> (\(m\)) and <code>QuadraticRegularization</code> (\(q\)) to arrive at adjusted gradient \(\nabla_t^\prime\) to apply to the weights in this step:</p>
 <p>\begin{equation}
 \nabla_t^\prime = \nabla E(\mathbf{w}_{t-1}) + m \nabla E(\mathbf{w}_{t-2}) + q \mathbf{w}_{t-1}
 \end{equation}</p>
@@ -162,7 +164,7 @@
 <p>The <code>QuadraticRegularization</code> (\(q\)) term forces the gradient to point increasingly toward zero as the weights become bigger, thus preventing the weights from becoming too large or too small.  This lowers risk of overfitting, and ensures that the weights remain in the range where they are sensitive enough to corrections in future steps.</p>
 <p>In formula (2), <code>LearningRate</code> determines the overall impact of the adjustment in each step, with higher values leading to higher adjustments, but also possibly leading to overshooting the optimum weights.</p>
 <h3>Role of the neural network</h3>
-<p>The formulas above have purposefully omitted details on how to calculate the neural network's error gradient, \(\nabla E(\mathbf{w}_{t-1})\).  Like any other trainer in NNX, Simple Gradient Trainer is a generic trainer that can act on any neural network supported by NNX; the specifics of calculating the gradient are therefore provided by the neural network that the trainer acts on. These details can be found on reference page for the neural network, e.g. <a href="MultilayerPerceptron.html">Multilayer perceptron</a>.</p>
+<p>The formulas above have purposefully omitted details on how to calculate the neural network's error gradient, \(\nabla E(\mathbf{w}_{t-1})\).  Like any other trainer in NNX, <code>SimpleGradientTrainer</code> is a generic trainer that can act on any neural network supported by NNX; the specifics of calculating the gradient are therefore provided by the neural network that the trainer acts on. These details can be found on reference page for the neural network, e.g. <a href="MultilayerPerceptron.html">Multilayer perceptron</a>.</p>
 </div>
 </div>
 					</div>
@@ -187,7 +189,14 @@
 		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 		<script type="text/x-mathjax-config">
 			MathJax.Hub.Config({
-			  TeX: { equationNumbers: { autoNumber: "AMS" } }
+			  TeX: { equationNumbers: { autoNumber: "AMS" } },
+			  "HTML-CSS": {
+			    preferredFont: "Latin-Modern",
+				webFont: "Latin-Modern"
+			},
+			  SVG: {
+				  font: "Latin-Modern"
+			  }
 			});
 		</script>
 	</body>

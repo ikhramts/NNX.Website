@@ -4,7 +4,7 @@
 		<meta content="en-au" http-equiv="Content-Language" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-		<title>Multilayer Perceptron</title>
+		<title>Multilayer perceptron</title>
 		<link href='https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Varela+Round' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="shortcut icon" href="/img/favicon.ico" />
@@ -41,7 +41,9 @@
 					          <ul class="dropdown-menu">
 					            <li><a href="/docs/tutorial/">Tutorial</a></li>
 					            <li><a href="/docs/reference/">Function reference</a></li>
-					            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">Sample workbook</a></li>
+					            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">
+									Sample workbook
+								</a></li>
 					          </ul>
 							</li>
 					        <li><a href="https://github.com/ikhramts/nnx"><i class="fa fa-github"></i>  Source</a></li>
@@ -82,17 +84,87 @@
     <ul>
         <li><a href="nnClearAllObjects.html">nnClearAllObjects</a></li>
         <li><a href="nnGetCrossEntropyError.html">nnGetCrossEntropyError</a></li>
-        <li><a href="nnGetMeanSquareErro.htmlr">nnGetMeanSquareError</a></li>
+        <li><a href="nnGetMeanSquareError.html">nnGetMeanSquareError</a></li>
     </ul>
 </div>
 <div class="reference-body col-md-9">
-    <h1>Multilayer Perceptron</h1>
-    <h2>Overview</h2>
+    <h1>Multilayer perceptron</h1>
+    <p>Multilayer perceptron is a basic feed-forward neural network that maps sets of data into output categories. It is best used for classification of inputs into groups.</p>
+<p>NNX implementation of multilayer perceptron has the following properties:</p>
+<ul>
+<li>Every node in a given layer is connected to every node in preceding and succeeding layers.</li>
+<li>Hidden layer activation function is \(\tanh\).</li>
+<li>Output layer activation function is <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax</a>.</li>
+<li>Backpropagation assumes that the error is calculated using <a href="nnGetCrossEntropyError.html">cross-entropy error function</a>.</li>
+</ul>
+<p>In NNX nomenclature, for multilayer perceptrons (and any other neural networks) the input layer is layer 0, first hidden layer is layer 1, and the first layer of weights is the set of weights for connections between input and hidden layers.  All remaining layers are numberered in increasing order.</p>
 <h2>Functions</h2>
+<p>Multilayer perceptrons can be created using:</p>
+<ul>
+<li><a href="nnMakeMultilayerPerceptron.html"><code>nnMakeMultilayerPerceptron</code></a>: directly creates a multilayer perceptron and assigns weights to all connections.</li>
+<li><a href="nnTrainMultilayerPerceptron.html"><code>nnTrainMultilayerPerceptron</code></a>: trains a multilayer perceptron given a trainer, a training set, and some additional arguments.</li>
+</ul>
 <h2>Calculation details</h2>
 <h3>Feed forward</h3>
+<p><img src="Neural-network-diagram.png" alt="Multilayer perceptron diagram"></p>
+<p>Given:</p>
+<ul>
+<li>A perceptron with layers \(0, 1, ..., N\), where layer \(0\) is the input layer and layer \(N\) is the output layer,</li>
+<li>\(k_a\) nodes per layer for each layer \(0 \leq a \leq N\), with the final \(k_a\)-th node always set to 1 and representing the bias (except for output layer, which does not have bias),</li>
+<li>for each layer \(1 \leq a \leq N\), the weights \(\mathbf{w}_a = [w_a (1, 1), w_a (1, 2), ... , w_a (k_{a-1}, k_a - 1)]\) for connections between each node between layer \(a\) and layer \(a - 1\),</li>
+<li>input and hidden layer nodes \(h_{i_a}^a\) for \(1 \leq a \leq N-1\) and \(0 \leq i_a \leq k_a\),</li>
+</ul>
+<p>The feed-forward algorithm for a multilayer perceptron works as follows.  For hidden layers \(1 \leq a \leq N-1\), value of a hidden node \(h_{i_a}^l\) is given by \(\tanh\) of linear combination of node values for the preceding layer:</p>
+<p>\begin{equation*}
+h_{i_a}^a = \tanh\left( \sum_{j = 1} ^ {k_{a-1}} w_a (j, i_a) h_{j}^{a - 1} \right)
+\end{equation*}</p>
+<p>This calculation is performed from first hidden layer to last, iteratively using nodes from each calculated layer to determine values for the next layer.</p>
+<p>Then, to calculate values for output layer nodes, the multilayer perceptron first calculates a pre-output value \(o_i^\prime\) for each \(1 &lt; i &lt; k_N\) by taking a linear combination of last hidden layer's nodes</p>
+<p>\begin{equation*}
+o_i^\prime = \sum_{j = 1} ^ {k_{l-1}} w_N (j, i) h_{j}^{N - 1}
+\end{equation*}</p>
+<p>and uses softmax to calculate the final output values:</p>
+<p>\begin{equation*}
+o_i = \frac{o_i^\prime}{\sum_{j = 1} ^ {k_N} o_j^\prime }
+\end{equation*}</p>
+<p>These are the final values that are produced when using <a href="nnFeedForward.html"><code>nnFeedForward()</code></a> on multilayer perceptron.</p>
 <h3>Gradient calculation</h3>
+<p>The neural network's gradient calculation is used by trainers like <a href="nnMakeSimpleGradientTrainer.html"><code>SimpleGradientTrainer</code></a> to determine the adjustment to make in each backpropagation step.  For this multulayer perceptron, gradient calculation assumes that cross-entropy error is used as the error function that determines how close the neural network got to the expected outputs.</p>
+<p>The gradient calculation is given as follows.  Given:</p>
+<ul>
+<li>\(E\): error function (cross-entropy error of targets relative to outputs).</li>
+<li>\(N\): number of hidden and output layers.</li>
+<li>\(a\): a layer between \(0\) (input) and \(n\) (output), inclusive.</li>
+<li>\(i_a\): \(i\)-th node in layer \(a\).</li>
+<li>\( \mathbf{o} = (o_1, ..., o_{i_N})\): neural network outputs for the given inputs.</li>
+<li>\( \mathbf{t} = (t_1, ..., t_{i_N})\): neural network training targets for the given inputs.</li>
+<li>\(h_{i_a}\): value of \(i\)-th hidden (or input, or output) node in layer \(a\) after activation.</li>
+<li>\(h_{i_a}^\prime\): value of \(i\)-th node in layer \(a\) before activation (so \(h_{i_a} = \tanh h_{i_a}^\prime\)) .</li>
+<li>\(w_a (i_{a-1}, i_a)\): weight of \(i_{a-1}\)-th node in layer \(a-1\) in activation of \(i_a\)-th node in layer \(a\).</li>
+<li>\(\mathbf{w} = (w_1(1, 1), ..., w_N (k_{N-1}, k_N))\): collection of all weights in the neural network.</li>
+</ul>
+<p>Note that indexes \(i_a\) and \(i_{a-1}\) may have different values.</p>
+<p>Then, for each weight \(w_a (i_{a-1}, i_a)\), the partial derivative of the error function with respect to the weight is given by</p>
+<p>\begin{equation*}
+\frac{\partial E}{\partial w_a (i_{a-1},i_a)} = h_{i_{a-1}}\frac{\partial E}{\partial h_{i_{a}^\prime}}
+\end{equation*}</p>
+<p>where for layer \(N\) (output)</p>
+<p>\begin{equation*}
+\frac{\partial E}{\partial \bar{h}_{i_{n}}} = o_{i_n} - t_{i_n}
+\end{equation*}</p>
+<p>and for any preceding layers \(1 \leq a &lt; N\) it is given recursively by</p>
+<p>\begin{equation*}
+\frac{\partial E}{\partial h_{i_{a}^\prime}} = (1-h^2_{i_a})\sum_{j_{a+1}}w_a (i_a, j_{a+1})\frac{\partial E}{\partial h_{j_{a+1}}^\prime}
+\end{equation*}</p>
+<p>The overall gradient is then the collection of partial derivatives of \(E\) with respect to each weight:</p>
+<p>\begin{equation*}
+\nabla E(\mathbf{w}) = \left( \frac{\partial E}{\partial w_1(1,1)}, ...,  \frac{\partial E}{\partial w_N(k_{N-1}, k_N)} \right)
+\end{equation*}</p>
 <h2>Layout of weights</h2>
+<p>This section may be useful if you wish to directly provide the weights for multilayer perceptron, or if you wish to figure out what the result of <a href="nnGetWeights.html"><code>nnGetWeights()</code></a> produces.</p>
+<p>The weights of the perceptron are represented as an array of arrays, with each internal array representing an individual layer of connections between the layers.  The first array represents the weights of the the connections between the input layer and the first hidden layer, and subsequent arrays represent connections between later layers, with final array of weights being the weights of connections between final hidden layer and output layer.</p>
+<p>$$</p>
+<p>$$</p>
 </div>
 </div>
 					</div>
@@ -117,7 +189,14 @@
 		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 		<script type="text/x-mathjax-config">
 			MathJax.Hub.Config({
-			  TeX: { equationNumbers: { autoNumber: "AMS" } }
+			  TeX: { equationNumbers: { autoNumber: "AMS" } },
+			  "HTML-CSS": {
+			    preferredFont: "Latin-Modern",
+				webFont: "Latin-Modern"
+			},
+			  SVG: {
+				  font: "Latin-Modern"
+			  }
 			});
 		</script>
 	</body>

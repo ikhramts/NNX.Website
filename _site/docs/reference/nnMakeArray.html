@@ -41,7 +41,9 @@
 					          <ul class="dropdown-menu">
 					            <li><a href="/docs/tutorial/">Tutorial</a></li>
 					            <li><a href="/docs/reference/">Function reference</a></li>
-					            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">Sample workbook</a></li>
+					            <li><a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">
+									Sample workbook
+								</a></li>
 					          </ul>
 							</li>
 					        <li><a href="https://github.com/ikhramts/nnx"><i class="fa fa-github"></i>  Source</a></li>
@@ -82,12 +84,14 @@
     <ul>
         <li><a href="nnClearAllObjects.html">nnClearAllObjects</a></li>
         <li><a href="nnGetCrossEntropyError.html">nnGetCrossEntropyError</a></li>
-        <li><a href="nnGetMeanSquareErro.htmlr">nnGetMeanSquareError</a></li>
+        <li><a href="nnGetMeanSquareError.html">nnGetMeanSquareError</a></li>
     </ul>
 </div>
 <div class="reference-body col-md-9">
     <h1>nnMakeArray</h1>
-    <h2>Inputs/outputs</h2>
+    <p>Creates an array object. Arrays created using <code>nnMakeArray()</code> are an intermediate step in creating weights using <a href="nnMakeWeights.html"><code>nnMakeWeights()</code></a>.  See Sheet 2 on the <a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">sample workbook</a> for an example.</p>
+<p><code>Values</code> argument may contain blank cells; these cells will be skipped when creating an array. A blank cell is a cell with no value or an empty string (e.g. a cell containing formula <code>=&quot;&quot;</code>). Cells containing errors or zeros do not count as empty cells.</p>
+<h2>Inputs/outputs</h2>
 <table>
 <thead>
 <tr>
@@ -121,9 +125,6 @@
 </tr>
 </tbody>
 </table>
-<h2>Remarks</h2>
-<p>Arrays created using <code>nnMakeArray()</code> are an intermediate step in creating weights using <a href="nnMakeWeights.html"><code>nnMakeWeights()</code></a>.  See Sheet 2 on the <a href="https://github.com/ikhramts/NNX/blob/master/Samples/Iris-flower-data-set.xlsx?raw=true">sample workbook</a> for an example.</p>
-<p><code>Values</code> argument may contain blank cells; these cells will be skipped when creating an array. A blank cell is a cell with no value or an empty string (e.g. a cell containing formula <code>=&quot;&quot;</code>). Cells containing errors or zeros do not count as empty cells.</p>
 </div>
 </div>
 					</div>
@@ -148,7 +149,14 @@
 		<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 		<script type="text/x-mathjax-config">
 			MathJax.Hub.Config({
-			  TeX: { equationNumbers: { autoNumber: "AMS" } }
+			  TeX: { equationNumbers: { autoNumber: "AMS" } },
+			  "HTML-CSS": {
+			    preferredFont: "Latin-Modern",
+				webFont: "Latin-Modern"
+			},
+			  SVG: {
+				  font: "Latin-Modern"
+			  }
 			});
 		</script>
 	</body>
