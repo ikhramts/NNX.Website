@@ -2,6 +2,8 @@ pretzel:
     engine: liquid
 exclude:
     - LICENSE.txt
+    - taste.bat
+    - bake.bat
     - Pretzel\
     - .git
     - .gitignore

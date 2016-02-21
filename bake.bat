@@ -1,0 +1,1 @@
+Pretzel\Pretzel.exe bake --cleantarget
