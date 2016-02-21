@@ -3,7 +3,7 @@
   <title>Feed Name</title>
   <link href="http://domain/"/>
   <link type="application/atom+xml" rel="self" href="http://domain/atom.xml"/>
-  <updated>2016-02-21T17:36:45.6571463-05:00</updated>
+  <updated>2016-02-21T17:50:23.2453622-05:00</updated>
   <id>http://domain/</id>
   <author>
     <name>Author</name>
@@ -12,10 +12,10 @@
 
   
   <entry>
-    <id>http://domain//2016/01/31/initial_release.html</id>
-    <link type="text/html" rel="alternate" href="http://domain//2016/01/31/initial_release.html"/>
+    <id>http://domain//2016/02/22/initial_release.html</id>
+    <link type="text/html" rel="alternate" href="http://domain//2016/02/22/initial_release.html"/>
     <title>Initial release</title>
-    <updated>2016-01-31T00:00:00-05:00</updated>
+    <updated>2016-02-22T00:00:00-05:00</updated>
     <author>
       <name>Author</name>
       <uri>http://domain/</uri>
