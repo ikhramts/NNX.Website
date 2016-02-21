@@ -25,8 +25,6 @@ Multilayer perceptrons can be created using:
 
 ### Feed forward
 
-![Multilayer perceptron diagram](Neural-network-diagram.png)
-
 Given:
 * A perceptron with layers \\(0, 1, ..., N\\), where layer \\(0\\) is the input layer and layer \\(N\\) is the output layer,
 * \\(k_a\\) nodes per layer for each layer \\(0 \leq a \leq N\\), with the final \\(k_a\\)-th node always set to 1 and representing the bias (except for output layer, which does not have bias),
@@ -83,7 +81,7 @@ Then, for each weight \\(w_a (i_{a-1}, i_a)\\), the partial derivative of the er
 where for layer \\(N\\) (output)
 
 \begin{equation*}
-\frac{\partial E}{\partial \bar{h}\_{i_{n}}} = o\_{i_n} - t_{i_n}
+\frac{\partial E}{\partial h^\prime\_{i_{n}}} = o\_{i_n} - t_{i_n}
 \end{equation*}
 
 and for any preceding layers \\(1 \leq a < N\\) it is given recursively by
@@ -105,8 +103,17 @@ This section may be useful if you wish to directly provide the weights for multi
 
 The weights of the perceptron are represented as an array of arrays, with each internal array representing an individual layer of connections between the layers.  The first array represents the weights of the the connections between the input layer and the first hidden layer, and subsequent arrays represent connections between later layers, with final array of weights being the weights of connections between final hidden layer and output layer.
 
-
-
-$$
+Except for the final weights array that leads to outputs, each weights array has the following layout:
 
 $$
+[w(1, 1), w(2, 1), w(3, 1), ... w(k_{a-1}, 1), w(2, 1), w(2, 2), ..., w(k_{a-1}, k_a - 1)]
+$$
+
+Here \\(w(i, j)\\) is the weight of the connection between \\(i\\)-th node in preceding layer (layer \\(a-1\\)) and \\(j\\)-th node in the next layer (layer \\(a\\)).  Note that if layer \\(a\\) is a hidden layer, then the second index \\(j\\) only goes up to \\(k_a - 1\\) because \\(k_a\\)-th node is the bias node which is always set to 1.  This also means that weights \\(w(k_{a-1}, j)\\) for all \\(j\\) are bias weights leading into each node \\(j\\) in layer \\(a\\).
+
+In case where layer the next layer \\(a\\) is the output layer, the second index will go up to \\(k_a\\) instead of \\(k_a - 1\\) because the output layer does not have bias nodes:
+
+$$
+[w(1, 1), w(2, 1), w(3, 1), ... w(k_{a-1}, 1), w(2, 1), w(2, 2), ..., w(k_{a-1}, k_a)]
+$$
+
